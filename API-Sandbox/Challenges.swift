@@ -40,11 +40,17 @@ internal func exerciseOne() {
      call at <cell phone number>."
      
      */
-    
-    
-    
-    
-    
+    let lastName = userData["results"][0]["name"]["last"].stringValue
+    let streetName = userData["results"][0]["location"]["street"].stringValue
+    let cityName = userData["results"][0]["location"]["city"].stringValue
+    let stateName = userData["results"][0]["location"]["state"].stringValue
+    let postCode = userData["results"][0]["location"]["postcode"].intValue
+    let title = userData["results"][0]["name"]["title"].stringValue
+    let emailAdress = userData["results"][0]["email"].stringValue
+    let cellPhoneNumber = userData["results"][0]["cell"].stringValue
+  
+  print("\(firstName) \(lastName) lives at \(streetName) in \(cityName), \(stateName), ")
+  print("\(postCode). If you want to contact \(title). \(lastName), you can email \(emailAdress) or call at \(cellPhoneNumber).")
 }
 
 internal func exerciseTwo() {
