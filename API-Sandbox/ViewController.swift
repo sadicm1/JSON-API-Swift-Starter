@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
     
+    var linkURL: NSURL?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -38,8 +40,20 @@ class ViewController: UIViewController {
                     
                     // Do what you need to with JSON here!
                     // The rest is all boiler plate code you'll use for API requests
+                    let jsonMovieData = json["feed"]["entry"][0]
                     
+                    let movie = Movie(json: jsonMovieData)
+                    self.linkURL = NSURL(string: movie.link)!
                     
+                    self.movieTitleLabel.text = movie.name
+                    self.rightsOwnerLabel.text = movie.rightsOwner
+                    self.releaseDateLabel.text = movie.releaseDate
+                    self.priceLabel.text = String(movie.price)
+                    if let imageURL = movie.imageURL {
+                        if let imageData = NSData(contentsOfURL: imageURL) {
+                            self.posterImageView.image = UIImage(data: imageData)
+                        }
+                    }
                 }
             case .Failure(let error):
                 print(error)
@@ -57,8 +71,8 @@ class ViewController: UIViewController {
         posterImageView.af_setImageWithURL(NSURL(string: urlString)!)
     }
     
-    @IBAction func viewOniTunesPressed(sender: AnyObject) {
-        
+    @IBAction func viewOniTunesPressed(sender: UIButton) {
+       UIApplication.sharedApplication().openURL(linkURL!)
     }
     
 }
