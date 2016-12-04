@@ -15,7 +15,7 @@ struct Movie {
     let price: Double
     let link: String
     let releaseDate: String
-    let imageURL: NSURL?
+    let poster: String
     
     init(json: JSON) {
         self.name = json["im:name"]["label"].stringValue
@@ -23,6 +23,6 @@ struct Movie {
         self.price = Double(String(json["im:price"]["label"].stringValue.characters.dropFirst())) ?? 0
         self.link = json["link"][0]["attributes"]["href"].stringValue
         self.releaseDate = json["im:releaseDate"]["attributes"]["label"].stringValue
-        self.imageURL = NSURL(string: json["im:image"][0]["label"].stringValue) ?? nil
+        self.poster = json["im:image"][2]["label"].stringValue
     }
 }

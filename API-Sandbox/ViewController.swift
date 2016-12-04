@@ -20,8 +20,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
     
-    var linkURL: NSURL?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -44,17 +42,12 @@ class ViewController: UIViewController {
                     let jsonMovieData = json["feed"]["entry"][randomMovieNumber]
                     
                     let movie = Movie(json: jsonMovieData)
-                    self.linkURL = NSURL(string: movie.link)!
                     
                     self.movieTitleLabel.text = movie.name
                     self.rightsOwnerLabel.text = movie.rightsOwner
                     self.releaseDateLabel.text = movie.releaseDate
                     self.priceLabel.text = String(movie.price)
-                    if let imageURL = movie.imageURL {
-                        if let imageData = NSData(contentsOfURL: imageURL) {
-                            self.posterImageView.image = UIImage(data: imageData)
-                        }
-                    }
+                    self.loadPoster(movie.poster)
                 }
             case .Failure(let error):
                 print(error)
@@ -73,7 +66,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func viewOniTunesPressed(sender: UIButton) {
-       UIApplication.sharedApplication().openURL(linkURL!)
+       
     }
     
 }
