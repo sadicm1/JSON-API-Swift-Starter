@@ -21,6 +21,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var posterImageView: UIImageView!
     
     var movieLink: String = ""
+    var allMovies: Array<Movie> = []
+    var currentMovieIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,10 @@ class ViewController: UIViewController {
         // exerciseTwo()
         // exerciseThree()
         
+        callRandomMovies()
+    }
+    
+    private func callRandomMovies() {
         let apiToContact = "https://itunes.apple.com/us/rss/topmovies/limit=25/json"
         // This code will call the iTunes top 25 movies endpoint listed above
         Alamofire.request(.GET, apiToContact).validate().responseJSON() { response in
@@ -44,18 +50,32 @@ class ViewController: UIViewController {
                     let jsonMovieData = json["feed"]["entry"][randomMovieNumber]
                     
                     let movie = Movie(json: jsonMovieData)
+                    self.assignUIObjects(movie)
                     
-                    self.movieTitleLabel.text = movie.name
-                    self.rightsOwnerLabel.text = movie.rightsOwner
-                    self.releaseDateLabel.text = movie.releaseDate
-                    self.priceLabel.text = String(movie.price)
-                    self.loadPoster(movie.poster)
-                    self.movieLink = movie.link
+                    // want our movies array to have maximum 100 movies
+                    guard self.currentMovieIndex < 100 else { return }
+                 
+                    // append the movie object to allMovies array each time we request a random movie
+                    self.allMovies.append(movie)
+                    // update current index of allMovies array. It is the last element whenever we call random movie.
+                    self.currentMovieIndex = self.allMovies.count - 1
+                    
                 }
             case .Failure(let error):
                 print(error)
             }
         }
+    }
+    
+    private func assignUIObjects(movie: Movie) {
+        // Assign a value to each UI object
+        
+        movieTitleLabel.text = movie.name
+        rightsOwnerLabel.text = movie.rightsOwner
+        releaseDateLabel.text = movie.releaseDate
+        priceLabel.text = String(movie.price)
+        loadPoster(movie.poster)
+        movieLink = movie.link
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,6 +90,33 @@ class ViewController: UIViewController {
     
     @IBAction func viewOniTunesPressed(sender: UIButton) {
        UIApplication.sharedApplication().openURL(NSURL(string: movieLink)!)
+    }
+  
+    @IBAction func nextMovie(sender: UIButton) {
+        // Show next movie.
+        
+        if currentMovieIndex < allMovies.count - 1 {
+            // Show the next movie after current movie in the array if there is any
+            currentMovieIndex += 1
+            assignUIObjects(allMovies[currentMovieIndex])
+        } else {
+            // if the our movies array is empty then call a random movie.
+            callRandomMovies()
+        }
+    }
+  
+    @IBAction func previousMovie(sender: UIButton) {
+        // show previous movie.
+        
+        switch currentMovieIndex {
+        case 0:
+            return
+        default:
+            // show previous movie from current movie if there is any.
+            currentMovieIndex -= 1
+            assignUIObjects(allMovies[currentMovieIndex])
+        }
+        
     }
     
 }
