@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5BE170B8F5A20614E79A9A28 /* Pods_API_Sandbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01154C4FBFA9CD09575249D7 /* Pods_API_Sandbox.framework */; };
+		7E9F1AFE1DF75E2F00DDF40A /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9F1AFD1DF75E2F00DDF40A /* Book.swift */; };
+		7E9F1B051DF7614300DDF40A /* iTunes-Books.json in Resources */ = {isa = PBXBuildFile; fileRef = 7E9F1B041DF7614300DDF40A /* iTunes-Books.json */; };
 		BC7C84541D1D488300BA19ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7C84531D1D488300BA19ED /* AppDelegate.swift */; };
 		BC7C84561D1D488300BA19ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7C84551D1D488300BA19ED /* ViewController.swift */; };
 		BC7C84591D1D488300BA19ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7C84571D1D488300BA19ED /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 
 /* Begin PBXFileReference section */
 		01154C4FBFA9CD09575249D7 /* Pods_API_Sandbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_API_Sandbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E9F1AFD1DF75E2F00DDF40A /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		7E9F1B041DF7614300DDF40A /* iTunes-Books.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "iTunes-Books.json"; sourceTree = "<group>"; };
 		BC7C84501D1D488300BA19ED /* API-Sandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "API-Sandbox.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7C84531D1D488300BA19ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC7C84551D1D488300BA19ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +78,7 @@
 				BC7C84531D1D488300BA19ED /* AppDelegate.swift */,
 				BC7C846C1D20CEEB00BA19ED /* Challenges.swift */,
 				BC7C846A1D20C2B000BA19ED /* Movie.swift */,
+				7E9F1AFD1DF75E2F00DDF40A /* Book.swift */,
 				BC7C84551D1D488300BA19ED /* ViewController.swift */,
 				BC7C84571D1D488300BA19ED /* Main.storyboard */,
 				BC7C845C1D1D488300BA19ED /* LaunchScreen.storyboard */,
@@ -88,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				BC7C84661D1D677800BA19ED /* iTunes-Movies.json */,
+				7E9F1B041DF7614300DDF40A /* iTunes-Books.json */,
 				BC7C84671D1D677800BA19ED /* Random-User.json */,
 			);
 			path = JSON;
@@ -171,6 +177,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E9F1B051DF7614300DDF40A /* iTunes-Books.json in Resources */,
 				BC7C84691D1D677800BA19ED /* Random-User.json in Resources */,
 				BC7C845E1D1D488300BA19ED /* LaunchScreen.storyboard in Resources */,
 				BC7C845B1D1D488300BA19ED /* Assets.xcassets in Resources */,
@@ -237,6 +244,7 @@
 				BC7C84561D1D488300BA19ED /* ViewController.swift in Sources */,
 				BC7C846D1D20CEEB00BA19ED /* Challenges.swift in Sources */,
 				BC7C84541D1D488300BA19ED /* AppDelegate.swift in Sources */,
+				7E9F1AFE1DF75E2F00DDF40A /* Book.swift in Sources */,
 				BC7C846B1D20C2B000BA19ED /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
