@@ -14,31 +14,29 @@ import AlamofireNetworkActivityIndicator
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var movieTitleLabel: UILabel!
-    @IBOutlet weak var rightsOwnerLabel: UILabel!
+    @IBOutlet weak var albumTitleLabel: UILabel!
+    @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
     
-    var movieLink: String = ""
-    var allMovies: Array<Movie> = []
-    var currentMovieIndex = 0
+    var allAlbums: Array<Album> = []
+    var currentAlbumIndex = 0
+    var albumLink = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // exerciseOne()
-        // exerciseTwo()
-        // exerciseThree()
-        
-        callRandomMovies()
+        callRandomAlbums()
     }
     
-    private func callRandomMovies() {
-        let apiToContact = "https://itunes.apple.com/us/rss/topmovies/limit=25/json"
-        // This code will call the iTunes top 25 movies endpoint listed above
-        Alamofire.request(.GET, apiToContact).validate().responseJSON() { response in
+    private func callRandomAlbums() {
+        let apiToContact = "https://itunes.apple.com/search"
+        let parameters = ["term": "selena+gomez", "media": "music"]
+        
+        // This code will call the iTunes top 25 Albums endpoint listed above
+        Alamofire.request(.GET, apiToContact, parameters: parameters).validate().responseJSON() { response in
             switch response.result {
             case .Success:
                 if let value = response.result.value {
@@ -46,19 +44,19 @@ class ViewController: UIViewController {
                     
                     // Do what you need to with JSON here!
                     // The rest is all boiler plate code you'll use for API requests
-                    let randomMovieNumber = Int(arc4random_uniform(25))
-                    let jsonMovieData = json["feed"]["entry"][randomMovieNumber]
+                    let randomAlbumNumber = Int(arc4random_uniform(25))
+                    let jsonAlbumData = json["results"][randomAlbumNumber]
                     
-                    let movie = Movie(json: jsonMovieData)
-                    self.assignUIObjects(movie)
+                    let album = Album(json: jsonAlbumData)
+                    self.assignUIObjects(album)
                     
-                    // want our movies array to have maximum 100 movies
-                    guard self.currentMovieIndex < 100 else { return }
+                    // want our Albums array to have maximum 100 Albums
+                    guard self.currentAlbumIndex < 100 else { return }
                  
-                    // append the movie object to allMovies array each time we request a random movie
-                    self.allMovies.append(movie)
-                    // update current index of allMovies array. It is the last element whenever we call random movie.
-                    self.currentMovieIndex = self.allMovies.count - 1
+                    // append the Album object to allAlbums array each time we request a random Album
+                    self.allAlbums.append(album)
+                    // update current index of allAlbums array. It is the last element whenever we call random Album.
+                    self.currentAlbumIndex = self.allAlbums.count - 1
                     
                 }
             case .Failure(let error):
@@ -67,15 +65,15 @@ class ViewController: UIViewController {
         }
     }
     
-    private func assignUIObjects(movie: Movie) {
+    private func assignUIObjects(album: Album) {
         // Assign a value to each UI object
         
-        movieTitleLabel.text = movie.name
-        rightsOwnerLabel.text = movie.rightsOwner
-        releaseDateLabel.text = movie.releaseDate
-        priceLabel.text = String(movie.price)
-        loadPoster(movie.poster)
-        movieLink = movie.link
+        albumTitleLabel.text = album.name
+        artistLabel.text = album.artist
+        releaseDateLabel.text = album.releaseDate
+        priceLabel.text = String(album.price)
+        loadPoster(album.poster)
+        albumLink = album.link
     }
 
     override func didReceiveMemoryWarning() {
@@ -89,32 +87,32 @@ class ViewController: UIViewController {
     }
     
     @IBAction func viewOniTunesPressed(sender: UIButton) {
-       UIApplication.sharedApplication().openURL(NSURL(string: movieLink)!)
+        UIApplication.sharedApplication().openURL(NSURL(string: albumLink)!)
     }
   
-    @IBAction func nextMovie(sender: UIButton) {
-        // Show next movie.
+    @IBAction func nextAlbum(sender: UIButton) {
+        // Show next Album.
         
-        if currentMovieIndex < allMovies.count - 1 {
-            // Show the next movie after current movie in the array if there is any
-            currentMovieIndex += 1
-            assignUIObjects(allMovies[currentMovieIndex])
+        if currentAlbumIndex < allAlbums.count - 1 {
+            // Show the next Album after current Album in the array if there is any
+            currentAlbumIndex += 1
+            assignUIObjects(allAlbums[currentAlbumIndex])
         } else {
-            // if the our movies array is empty then call a random movie.
-            callRandomMovies()
+            // if the our Albums array is empty then call a random Album.
+            callRandomAlbums()
         }
     }
   
-    @IBAction func previousMovie(sender: UIButton) {
-        // show previous movie.
+    @IBAction func previousAlbum(sender: UIButton) {
+        // show previous Album.
         
-        switch currentMovieIndex {
+        switch currentAlbumIndex {
         case 0:
             return
         default:
-            // show previous movie from current movie if there is any.
-            currentMovieIndex -= 1
-            assignUIObjects(allMovies[currentMovieIndex])
+            // show previous Album from current Album if there is any.
+            currentAlbumIndex -= 1
+            assignUIObjects(allAlbums[currentAlbumIndex])
         }
         
     }
