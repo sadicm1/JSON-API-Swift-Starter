@@ -7,18 +7,21 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 struct TurkeyTopics {
-    let hot: String
-    let new: String
-    let rising: String
-    let controversial: String
-    let questions: String
-    let politics: String
-    let nonPolitical: String
-    let conflict: String
-    /*
+    
+    let category: String
+    let numberOfComments: Int
+    let profileImage: String
+    let messageTitle: String
+    let link: String
+    
     init(json: JSON) {
-        self.hot = json["data"][]
-    } */
+        self.category = json["data"]["link_flair_text"].stringValue
+        self.numberOfComments = json["data"]["num_comments"].intValue
+        self.profileImage = json["data"]["thumbnail"].stringValue
+        self.messageTitle = json["data"]["title"].stringValue
+        self.link = json["data"]["url"].stringValue
+    }
 }

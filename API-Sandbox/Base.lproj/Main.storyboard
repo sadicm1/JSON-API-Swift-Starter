@@ -101,6 +101,13 @@
                             <constraint firstItem="Shc-a4-C9F" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Jxj-gP-8At"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="categoryLabel" destination="jgA-fb-3HJ" id="v3Q-KW-W3n"/>
+                        <outlet property="messageTitleLabel" destination="Y1Z-jb-KKc" id="XUg-ay-bvF"/>
+                        <outlet property="numberOfCommentsLabel" destination="Ehf-4M-qe5" id="DKW-7C-ODw"/>
+                        <outlet property="profileImageView" destination="Hkh-eX-r4x" id="rNe-wC-h3x"/>
+                        <outlet property="urlLinkLabel" destination="qFc-90-npO" id="hCB-gn-cjP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
