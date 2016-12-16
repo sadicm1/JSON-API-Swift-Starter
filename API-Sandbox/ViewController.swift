@@ -35,7 +35,8 @@ class ViewController: UIViewController {
                     
                     // Do what you need to with JSON here!
                     // The rest is all boiler plate code you'll use for API requests
-                    let randomMessageNumber = Int(arc4random_uniform(25))
+                    let messageCount = UInt32(json["data"]["children"].count)
+                    let randomMessageNumber = Int(arc4random_uniform(messageCount))
                     let jsonRedditData = json["data"]["children"][randomMessageNumber]
                     
                     let redditMessage = TurkeyTopics(json: jsonRedditData)
