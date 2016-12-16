@@ -8,19 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		5BE170B8F5A20614E79A9A28 /* Pods_API_Sandbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01154C4FBFA9CD09575249D7 /* Pods_API_Sandbox.framework */; };
+		7E2975561E033A1800201CD9 /* subreddit_Turkey.json in Resources */ = {isa = PBXBuildFile; fileRef = 7E2975551E033A1800201CD9 /* subreddit_Turkey.json */; };
+		7E2975581E033CB300201CD9 /* Turkey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2975571E033CB300201CD9 /* Turkey.swift */; };
 		BC7C84541D1D488300BA19ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7C84531D1D488300BA19ED /* AppDelegate.swift */; };
 		BC7C84561D1D488300BA19ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7C84551D1D488300BA19ED /* ViewController.swift */; };
 		BC7C84591D1D488300BA19ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7C84571D1D488300BA19ED /* Main.storyboard */; };
 		BC7C845B1D1D488300BA19ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC7C845A1D1D488300BA19ED /* Assets.xcassets */; };
 		BC7C845E1D1D488300BA19ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC7C845C1D1D488300BA19ED /* LaunchScreen.storyboard */; };
-		BC7C84681D1D677800BA19ED /* iTunes-Movies.json in Resources */ = {isa = PBXBuildFile; fileRef = BC7C84661D1D677800BA19ED /* iTunes-Movies.json */; };
-		BC7C84691D1D677800BA19ED /* Random-User.json in Resources */ = {isa = PBXBuildFile; fileRef = BC7C84671D1D677800BA19ED /* Random-User.json */; };
-		BC7C846B1D20C2B000BA19ED /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7C846A1D20C2B000BA19ED /* Movie.swift */; };
-		BC7C846D1D20CEEB00BA19ED /* Challenges.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC7C846C1D20CEEB00BA19ED /* Challenges.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		01154C4FBFA9CD09575249D7 /* Pods_API_Sandbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_API_Sandbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E2975551E033A1800201CD9 /* subreddit_Turkey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = subreddit_Turkey.json; sourceTree = "<group>"; };
+		7E2975571E033CB300201CD9 /* Turkey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Turkey.swift; path = ../Turkey.swift; sourceTree = "<group>"; };
 		BC7C84501D1D488300BA19ED /* API-Sandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "API-Sandbox.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC7C84531D1D488300BA19ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC7C84551D1D488300BA19ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -28,10 +28,6 @@
 		BC7C845A1D1D488300BA19ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC7C845D1D1D488300BA19ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC7C845F1D1D488300BA19ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BC7C84661D1D677800BA19ED /* iTunes-Movies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "iTunes-Movies.json"; sourceTree = "<group>"; };
-		BC7C84671D1D677800BA19ED /* Random-User.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Random-User.json"; sourceTree = "<group>"; };
-		BC7C846A1D20C2B000BA19ED /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
-		BC7C846C1D20CEEB00BA19ED /* Challenges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenges.swift; sourceTree = "<group>"; };
 		C27B705B88ACEF3AA01739F8 /* Pods-API-Sandbox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-API-Sandbox.release.xcconfig"; path = "Pods/Target Support Files/Pods-API-Sandbox/Pods-API-Sandbox.release.xcconfig"; sourceTree = "<group>"; };
 		C6B5D9918DBA7F38173FB419 /* Pods-API-Sandbox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-API-Sandbox.debug.xcconfig"; path = "Pods/Target Support Files/Pods-API-Sandbox/Pods-API-Sandbox.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,8 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				BC7C84531D1D488300BA19ED /* AppDelegate.swift */,
-				BC7C846C1D20CEEB00BA19ED /* Challenges.swift */,
-				BC7C846A1D20C2B000BA19ED /* Movie.swift */,
+				7E2975571E033CB300201CD9 /* Turkey.swift */,
 				BC7C84551D1D488300BA19ED /* ViewController.swift */,
 				BC7C84571D1D488300BA19ED /* Main.storyboard */,
 				BC7C845C1D1D488300BA19ED /* LaunchScreen.storyboard */,
@@ -87,8 +82,7 @@
 		BC7C84651D1D677800BA19ED /* JSON */ = {
 			isa = PBXGroup;
 			children = (
-				BC7C84661D1D677800BA19ED /* iTunes-Movies.json */,
-				BC7C84671D1D677800BA19ED /* Random-User.json */,
+				7E2975551E033A1800201CD9 /* subreddit_Turkey.json */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -171,10 +165,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC7C84691D1D677800BA19ED /* Random-User.json in Resources */,
 				BC7C845E1D1D488300BA19ED /* LaunchScreen.storyboard in Resources */,
+				7E2975561E033A1800201CD9 /* subreddit_Turkey.json in Resources */,
 				BC7C845B1D1D488300BA19ED /* Assets.xcassets in Resources */,
-				BC7C84681D1D677800BA19ED /* iTunes-Movies.json in Resources */,
 				BC7C84591D1D488300BA19ED /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -235,9 +228,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC7C84561D1D488300BA19ED /* ViewController.swift in Sources */,
-				BC7C846D1D20CEEB00BA19ED /* Challenges.swift in Sources */,
+				7E2975581E033CB300201CD9 /* Turkey.swift in Sources */,
 				BC7C84541D1D488300BA19ED /* AppDelegate.swift in Sources */,
-				BC7C846B1D20C2B000BA19ED /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

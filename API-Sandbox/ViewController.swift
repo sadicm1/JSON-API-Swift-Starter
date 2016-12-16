@@ -13,23 +13,11 @@ import AlamofireImage
 import AlamofireNetworkActivityIndicator
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var movieTitleLabel: UILabel!
-    @IBOutlet weak var rightsOwnerLabel: UILabel!
-    @IBOutlet weak var releaseDateLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var posterImageView: UIImageView!
-    
-    var movieLink: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        // exerciseOne()
-        // exerciseTwo()
-        // exerciseThree()
-        
+        /*
         let apiToContact = "https://itunes.apple.com/us/rss/topmovies/limit=25/json"
         // This code will call the iTunes top 25 movies endpoint listed above
         Alamofire.request(.GET, apiToContact).validate().responseJSON() { response in
@@ -55,21 +43,7 @@ class ViewController: UIViewController {
             case .Failure(let error):
                 print(error)
             }
-        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // Updates the image view when passed a url string
-    func loadPoster(urlString: String) {
-        posterImageView.af_setImageWithURL(NSURL(string: urlString)!)
-    }
-    
-    @IBAction func viewOniTunesPressed(sender: UIButton) {
-       UIApplication.sharedApplication().openURL(NSURL(string: movieLink)!)
+        } */
     }
     
 }
