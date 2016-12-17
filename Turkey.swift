@@ -16,6 +16,8 @@ struct TurkeyTopics {
     let profileImage: String
     let messageTitle: String
     let link: String
+    let domain: String
+    
     
     init(json: JSON) {
         self.category = json["data"]["link_flair_text"].stringValue
@@ -23,5 +25,6 @@ struct TurkeyTopics {
         self.profileImage = json["data"]["thumbnail"].stringValue
         self.messageTitle = json["data"]["title"].stringValue
         self.link = json["data"]["url"].stringValue
+        self.domain = json["data"]["domain"].stringValue
     }
 }

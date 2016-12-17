@@ -18,8 +18,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var numberOfCommentsLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var messageTitleLabel: UILabel!
+    @IBOutlet weak var sourceLinkLabel: UIButton!
     
     var urlLink = ""
+    var messageArray: [TurkeyTopics] = []
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,17 +43,24 @@ class ViewController: UIViewController {
                     
                     let redditMessage = TurkeyTopics(json: jsonRedditData)
                     
-                    self.categoryLabel.text = redditMessage.category
-                    self.numberOfCommentsLabel.text = String(redditMessage.numberOfComments)
-                    self.loadProfileImage(redditMessage.profileImage)
-                    self.messageTitleLabel.text = redditMessage.messageTitle
-                    self.urlLink = redditMessage.link
+                    self.assignUI(from: redditMessage)
                     
                 }
             case .Failure(let error):
                 print(error)
             }
         }
+        
+    }
+    
+    private func assignUI(from redditMessage: TurkeyTopics) {
+        // assign UI objects with the data from reddit message.
+        categoryLabel.text = redditMessage.category
+        numberOfCommentsLabel.text = String(redditMessage.numberOfComments)
+        loadProfileImage(redditMessage.profileImage)
+        messageTitleLabel.text = redditMessage.messageTitle
+        urlLink = redditMessage.link
+        sourceLinkLabel.setTitle("View on " + redditMessage.domain, forState: .Normal)
     }
     
     func loadProfileImage(urlString: String) {
@@ -59,7 +68,7 @@ class ViewController: UIViewController {
         profileImageView.af_setImageWithURL(NSURL(string: urlString)!)
     }
   
-  @IBAction func viewOnReddit(sender: UIButton) {
+  @IBAction func viewOn(sender: UIButton) {
     // views the original post on reddit site
     UIApplication.sharedApplication().openURL(NSURL(string: urlLink)!)
   }
