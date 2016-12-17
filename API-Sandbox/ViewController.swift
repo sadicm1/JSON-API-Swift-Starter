@@ -22,11 +22,16 @@ class ViewController: UIViewController {
     
     var urlLink = ""
     var messageArray: [TurkeyTopics] = []
+    var currentTopicIndex = -1
   
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        getRedditApi()
+    }
+    
+    private func getRedditApi() {
         let apiToContact = "https://www.reddit.com/r/Turkey.json"
         // This code will call the topics related to Turkey from reddit site.
         Alamofire.request(.GET, apiToContact).validate().responseJSON() { response in
@@ -43,18 +48,21 @@ class ViewController: UIViewController {
                     
                     let redditMessage = TurkeyTopics(json: jsonRedditData)
                     
-                    self.assignUI(from: redditMessage)
+                    // add reddit message to our array
+                    self.messageArray.append(redditMessage)
+                    self.currentTopicIndex += 1
                     
+                    self.assignUI(from: redditMessage)
                 }
             case .Failure(let error):
                 print(error)
             }
         }
-        
     }
     
     private func assignUI(from redditMessage: TurkeyTopics) {
         // assign UI objects with the data from reddit message.
+        
         categoryLabel.text = redditMessage.category
         numberOfCommentsLabel.text = String(redditMessage.numberOfComments)
         loadProfileImage(redditMessage.profileImage)
@@ -67,6 +75,28 @@ class ViewController: UIViewController {
         // Updates the image view when passed a url string
         profileImageView.af_setImageWithURL(NSURL(string: urlString)!)
     }
+    
+  @IBAction func previousTopic(sender: UIButton) {
+    
+    if currentTopicIndex <= 0 {
+        return
+    } else {
+        currentTopicIndex -= 1
+        assignUI(from: messageArray[currentTopicIndex])
+    }
+    
+  }
+  
+  @IBAction func nextTopic(sender: UIButton) {
+    
+    if currentTopicIndex == messageArray.count - 1 {
+        getRedditApi()
+    } else {
+        currentTopicIndex += 1
+        assignUI(from: messageArray[currentTopicIndex])
+    }
+  }
+  
   
   @IBAction func viewOn(sender: UIButton) {
     // views the original post on reddit site
