@@ -12,7 +12,7 @@ import SwiftyJSON
 struct TurkeyTopics {
     
     let category: String
-    let numberOfComments: Int
+    let score: Int
     let profileImage: String
     let messageTitle: String
     let link: String
@@ -21,7 +21,7 @@ struct TurkeyTopics {
     
     init(json: JSON) {
         self.category = json["data"]["link_flair_text"].stringValue
-        self.numberOfComments = json["data"]["num_comments"].intValue
+        self.score = json["data"]["num_comments"].intValue
         self.profileImage = json["data"]["thumbnail"].stringValue
         self.messageTitle = json["data"]["title"].stringValue
         self.link = json["data"]["url"].stringValue

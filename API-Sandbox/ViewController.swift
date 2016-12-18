@@ -15,7 +15,7 @@ import AlamofireNetworkActivityIndicator
 class ViewController: UIViewController {
   
     @IBOutlet weak var categoryLabel: UILabel!
-    @IBOutlet weak var numberOfCommentsLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var messageTitleLabel: UILabel!
     @IBOutlet weak var sourceLinkLabel: UIButton!
@@ -64,7 +64,7 @@ class ViewController: UIViewController {
         // assign UI objects with the data from reddit message.
         
         categoryLabel.text = redditMessage.category
-        numberOfCommentsLabel.text = String(redditMessage.numberOfComments)
+        scoreLabel.text = String(redditMessage.score)
         loadProfileImage(redditMessage.profileImage)
         messageTitleLabel.text = redditMessage.messageTitle
         urlLink = redditMessage.link
